@@ -3,7 +3,7 @@ import pandora from "@faizaanceg/pandora";
 import { Link, Redirect } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import validation from "../../validation";
-import { Avatar, Button, CssBaseline, TextField, Link as MatLink, Grid, Box, Container, makeStyles, Typography } from "@material-ui/core";
+import { Avatar, Button, CssBaseline, TextField, Link as MatLink, Box, Container, makeStyles, Typography } from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import  Home  from "@material-ui/icons/Home";
 
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginPage() {
   const classes = useStyles();
   const [values, setValues] = useState({
-    email: '',
+    email1: '',
     password1: ''
   });
   const [errors, setErrors] = useState({});
@@ -71,7 +71,7 @@ export default function LoginPage() {
   function Submit() {
     const Lists = pandora.get('users');
     const login = Lists.findIndex(list => {
-      return (list.email.toLowerCase() === values.email.toLowerCase() && list.password.toLowerCase() === values.password1.toLowerCase())
+      return (list.email.toLowerCase() === values.email1.toLowerCase() && list.password.toLowerCase() === values.password1.toLowerCase())
     })
     //if the user is currently logging in, we are storing the information in local storage
     if (login > -1) {
@@ -108,13 +108,13 @@ export default function LoginPage() {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="email1"
             label="Email Address"
-            name="email"
+            name="email1"
             autoFocus
             onChange={HandleChange}
           />
-          <div style={styleError}> {errors.email && <p>{errors.email}</p>} </div>
+          <div style={styleError}> {errors.email1 && <p>{errors.email1}</p>} </div>
           <TextField
             variant="outlined"
             margin="normal"
