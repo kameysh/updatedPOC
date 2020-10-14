@@ -20,7 +20,8 @@ export default function MenuComp() {
     return (
         <div>
             <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Link to='/'><Navbar.Brand><Home style={{ fontSize: 45 }} fontSize="large" /></Navbar.Brand></Link>
+                <Navbar.Brand href='/'><Home style={{ fontSize: 45 }} fontSize="large" />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse style={{
                     display: 'flex',

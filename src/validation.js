@@ -2,30 +2,29 @@ import pandora from "@faizaanceg/pandora";
 
 export default function validate(values) {
     let errors = {};
-    let items = pandora.get('users')
-    const found = items.find(item => item.email === values.email)
-    function findEmail() {
-        if (found)
-            return 1;
+    function findExistsEmail() {
+        let Lists = pandora.get('users');
+        if(Lists) {
+            let foundEmail = Lists.find(emails => emails.email == values.email)
+            if(foundEmail)
+            return 1
+        }
     }
+
     if (!values.username) {
-        errors.username = 'Username required'
-    } else if (!/^[a-zA-Z]+$/.test(values.name)) {
-        errors.username = 'Only characters allowed and above 2 characters'
+        errors.username = 'Name required'
+    }else if(values.username.length < 3) {
+       errors.username = 'Please provide username with more than 3 letter'
+    } else if (!/^[a-zA-Z]+$/.test(values.username)) {
+        errors.username = 'Only Alphabets allowed'
     }
 
     if (!values.email) {
         errors.email = 'Email required'
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
         errors.email = 'Invalid Email'
-    } else if (findEmail()) {
+    } else if (findExistsEmail()) {
         errors.email = 'Email already exists. Please login!'
-    }
-
-    if (!values.email1) {
-        errors.email1 = 'Email required'
-    } else if (!/\S+@\S+\.\S+/.test(values.email1)) {
-        errors.email1 = 'Invalid Email'
     }
 
 
@@ -40,6 +39,5 @@ export default function validate(values) {
     } else if (values.password1 !== values.password2) {
         errors.password2 = 'Password does not match. Please try again'
     }
-
     return errors;
 }

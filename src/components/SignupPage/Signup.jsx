@@ -85,8 +85,7 @@ export default function SignUp() {
         setRegValue(newArr);
         setSubmitted(true);
     }
-
-
+    
     return submitted ? <Redirect to='/login' /> : (
         <Container component="main" maxWidth="xs">
             <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -105,6 +104,7 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 name="username"
+                                values={values.username}
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -118,6 +118,7 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
+                                values={values.email}
                                 required
                                 fullWidth
                                 id="email"
@@ -130,6 +131,7 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
+                                values={values.password1}
                                 required
                                 fullWidth
                                 name="password1"
@@ -143,6 +145,7 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
+                                values={values.password2}
                                 required
                                 fullWidth
                                 name="password2"
